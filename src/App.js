@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [theme, setTheme] = useState(localStorage.theme);
-  const colourTheme = theme === "dark" ? "light" : "dark";
+  const [dark, setDark] = useState(theme === "light" ? false : true);
+  const colourTheme = theme === "light" ? "dark" : "light";
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove(colourTheme);
@@ -10,23 +11,25 @@ function App() {
     localStorage.setItem("theme", theme);
   }, [theme, colourTheme]);
   return (
-    <div className="container">
-      <label class="switch">
+    <div className="bg-white dark:bg-zinc-900  w-screen h-screen mx-auto">
+      <label
+        htmlFor="checked-toggle"
+        className="inline-flex relative items-center cursor-pointer"
+        aria-label="Theme Toggler"
+      >
         <input
           type="checkbox"
-          // checked={theme === "dark"}
+          id="checked-toggle"
+          className="sr-only peer"
+          checked={dark}
           onChange={() => {
             setTheme(colourTheme);
+            setDark(theme === "light");
           }}
         />
-        <span class="slider round"></span>
+        <div className="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
       </label>
-      <button
-        className="center rounded-full bg-gray-800 text-white dark:bg-slate-600 w-10 md:w-14 h-10 md:h-14 fixed bottom-2 md:bottom-4 right-2 md:right-4 text-[1rem] md:text-[2rem]"
-        onClick={() => {
-          setTheme(colourTheme);
-        }}
-      ></button>
+
       {/* Social Media Dashboard
   Total Followers: 23,004
 
@@ -90,7 +93,7 @@ function App() {
   1407
   12%
   
-  <div class="attribution">
+  <div className="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
   </div> */}
