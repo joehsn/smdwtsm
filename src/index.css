@@ -4,6 +4,48 @@
 @tailwind utilities;
 
 @layer components {
+  .main {
+    @apply min-h-screen w-full flex flex-col justify-center items-center bg-white dark:bg-veryDarkBlueForBG;
+  }
+  .content {
+    @apply min-h-screen w-full;
+  }
+  .header {
+    @apply bg-veryPaleBlueForTopBG w-full p-4 md:px-0 md:pt-8 pb-24 dark:bg-veryDarkBlueForTopBG rounded-b-2xl;
+  }
+  .header__container {
+    @apply mx-auto w-full md:w-3/4 md:flex md:items-center md:justify-between;
+  }
+  .header__title {
+    @apply mb-4 md:mb-0;
+  }
+  .header__title-logo {
+    @apply text-xl md:text-3xl font-bold text-veryDarkBlueForText dark:text-white;
+  }
+  .header__title-total {
+    @apply text-darkGrayishBlueForText dark:text-desaturatedBlueForText text-sm font-bold;
+  }
+  .header__theme {
+    @apply flex items-center justify-between mt-4 md:mt-0;
+  }
+  .header__theme-title {
+    @apply text-sm font-bold text-darkGrayishBlueForText dark:text-desaturatedBlueForText md:mr-3;
+  }
+  .header__theme-label {
+    @apply inline-flex relative items-center cursor-pointer;
+  }
+  .header__theme-toggler {
+    @apply w-12 h-6 bg-toggle rounded-full after:content-[''] after:absolute after:top-0.5 after:right-[3px] after:bg-white dark:after:bg-veryDarkBlueForTopBG dark:after:border-veryDarkBlueForTopBG after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600;
+  }
+  .content__container {
+    @apply mx-auto w-full md:w-3/4;
+  }
+  .content__container-blocks {
+    @apply w-full flex flex-wrap justify-between items-center -translate-y-[12.5%] sm:-translate-y-[20%] space-y-4 sm:space-y-0  md:-translate-y-1/2 px-4 md:px-0;
+  }
+  .card {
+    @apply w-full sm:w-[49%] md:w-[22.5%] overflow-hidden flex flex-col justify-center items-center bg-lightGrayishBlueForCardBG dark:bg-darkDesaturatedBlueForCardBG p-3 rounded relative after:content-[''] after:absolute after:top-0 after:right-0 after:w-full after:h-1 dark:text-white;
+  }
 }
 body {
   margin: 0;
@@ -14,67 +56,4 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
-
-/* The switch - the box around the slider */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-input:checked + .slider {
-  background-color: #2196f3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
 }

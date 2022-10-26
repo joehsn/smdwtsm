@@ -1,4 +1,54 @@
 import { useEffect, useState } from "react";
+import { down, facebook, instagram, twitter, up, youtube } from "./images";
+
+const blocks = [
+  {
+    icon: facebook,
+    username: "@nathanf",
+    status: up,
+    number: 1987,
+    title: "Followers",
+    time: "12 Today",
+  },
+  {
+    icon: twitter,
+    username: "@nathanf",
+    status: up,
+    number: 1044,
+    title: "Followers",
+    time: "99 Today",
+  },
+  {
+    icon: instagram,
+    username: "@realnathanf",
+    status: up,
+    number: "11k",
+    title: "Followers",
+    time: "1099 Today",
+  },
+  {
+    icon: youtube,
+    username: "Nathan F.",
+    status: down,
+    number: 8239,
+    title: "Subscribers",
+    time: "144 Today",
+  },
+];
+const borderColour = (e) => {
+  switch (e) {
+    case 1:
+      return "after:bg-facebook";
+    case 2:
+      return "after:bg-twitter";
+    case 3:
+      return "after:bg-gradient-to-r from-fromInsta to-toInsta";
+    case 4:
+      return "after:bg-youTube";
+    default:
+      return "after:bg-black";
+  }
+};
 
 function App() {
   const [theme, setTheme] = useState(localStorage.theme);
@@ -11,53 +61,60 @@ function App() {
     localStorage.setItem("theme", theme);
   }, [theme, colourTheme]);
   return (
-    <div className="bg-white dark:bg-zinc-900  w-screen h-screen mx-auto">
-      <label
-        htmlFor="checked-toggle"
-        className="inline-flex relative items-center cursor-pointer"
-        aria-label="Theme Toggler"
-      >
-        <input
-          type="checkbox"
-          id="checked-toggle"
-          className="sr-only peer"
-          checked={dark}
-          onChange={() => {
-            setTheme(colourTheme);
-            setDark(theme === "light");
-          }}
-        />
-        <div className="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-      </label>
+    <div className="main">
+      <div className="content">
+        <header className="header">
+          <div className="header__container">
+            <div className="header__title">
+              <a className="header__title-logo" href="/">
+                Social Media Dashboard
+              </a>
+              <div className="header__title-total">Total Followers: 23,004</div>
+            </div>
+            <hr className="md:hidden" />
+            <div className="header__theme">
+              <span className="header__theme-title">Dark Mode</span>
+              <label htmlFor="checked-toggle" className="header__theme-label">
+                <input
+                  type="checkbox"
+                  id="checked-toggle"
+                  className="sr-only peer"
+                  checked={dark}
+                  onChange={() => {
+                    setTheme(colourTheme);
+                    setDark(!dark);
+                  }}
+                />
+                <div
+                  aria-label="Theme Toggler"
+                  className="header__theme-toggler peer peer-checked:after:left-[23px] peer-checked:after:-translate-x-full peer-checked:bg-gradient-to-r peer-checked:from-fromToggle peer-checked:to-toToggle"
+                ></div>
+              </label>
+            </div>
+          </div>
+        </header>
+        <div className="content__container">
+          <div className="content__container-blocks">
+            {blocks.map((block, index) => (
+              <div key={index} className={`card ${borderColour(index + 1)}`}>
+                <div className="card__username">
+                  <img src={block.icon} alt="platform icon" />
+                  {block.username}
+                </div>
+                <div className="card__number">{block.number}</div>
+                <div className="card__title">{block.title}</div>
+                <div className="card__time">
+                  <img src={block.status} alt="status up or down" />
+                  {block.time}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div>small-blocks</div>
+        </div>
+      </div>
 
-      {/* Social Media Dashboard
-  Total Followers: 23,004
-
-  Dark Mode
-
-  
-
-  @nathanf
-  1987
-  Followers
-  12 Today
-
-  @nathanf
-  1044
-  Followers
-  99 Today
-
-  @realnathanf
-  11k
-  Followers
-  1099 Today
-
-  Nathan F.
-  8239
-  Subscribers
-  144 Today
-
-
+      {/*
 
   Overview - Today
 
