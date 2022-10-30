@@ -1,159 +1,95 @@
-import { useEffect, useState } from "react";
+import Blocks from "./components/blocks";
+import Header from "./components/Header";
 import { down, facebook, instagram, twitter, up, youtube } from "./images";
-
-const blocks = [
+const smallCardData = [
   {
+    title: "Page Views",
     icon: facebook,
-    username: "@nathanf",
-    status: up,
-    number: 1987,
-    title: "Followers",
-    time: "12 Today",
+    numb: 87,
+    tIcon: up,
+    percent: 3,
   },
   {
-    icon: twitter,
-    username: "@nathanf",
-    status: up,
-    number: 1044,
-    title: "Followers",
-    time: "99 Today",
+    title: "Likes",
+    icon: facebook,
+    numb: 52,
+    tIcon: down,
+    percent: 2,
   },
   {
+    title: "Likes",
     icon: instagram,
-    username: "@realnathanf",
-    status: up,
-    number: "11k",
-    title: "Followers",
-    time: "1099 Today",
+    numb: "52k",
+    tIcon: up,
+    percent: 2257,
   },
   {
-    icon: youtube,
-    username: "Nathan F.",
-    status: down,
-    number: 8239,
-    title: "Subscribers",
-    time: "144 Today",
+    title: "Profile Views",
+    icon: instagram,
+    numb: 5462,
+    tIcon: up,
+    percent: 1375,
+  },
+  {
+    title: "Retweets",
+    icon: twitter,
+    numb: 117,
+    tIcon: up,
+    percent: 303,
+  },
+  {
+    title: "Likes",
+    icon: twitter,
+    numb: 507,
+    tIcon: up,
+    percent: 553,
+  },
+  {
+    title: "Likes",
+    icon: twitter,
+    numb: 107,
+    tIcon: down,
+    percent: 19,
+  },
+  {
+    title: "Total Views",
+    icon: twitter,
+    numb: 1407,
+    tIcon: down,
+    percent: 12,
   },
 ];
-const borderColour = (e) => {
-  switch (e) {
-    case 1:
-      return "after:bg-facebook";
-    case 2:
-      return "after:bg-twitter";
-    case 3:
-      return "after:bg-gradient-to-r from-fromInsta to-toInsta";
-    case 4:
-      return "after:bg-youTube";
-    default:
-      return "after:bg-black";
-  }
-};
 
 function App() {
-  const [theme, setTheme] = useState(localStorage.theme);
-  const [dark, setDark] = useState(theme === "light" ? false : true);
-  const colourTheme = theme === "light" ? "dark" : "light";
-  useEffect(() => {
-    const root = window.document.documentElement;
-    root.classList.remove(colourTheme);
-    root.classList.add(theme);
-    localStorage.setItem("theme", theme);
-  }, [theme, colourTheme]);
   return (
     <div className="main">
       <div className="content">
-        <header className="header">
-          <div className="header__container">
-            <div className="header__title">
-              <a className="header__title-logo" href="/">
-                Social Media Dashboard
-              </a>
-              <div className="header__title-total">Total Followers: 23,004</div>
-            </div>
-            <hr className="md:hidden" />
-            <div className="header__theme">
-              <span className="header__theme-title">Dark Mode</span>
-              <label htmlFor="checked-toggle" className="header__theme-label">
-                <input
-                  type="checkbox"
-                  id="checked-toggle"
-                  className="sr-only peer"
-                  checked={dark}
-                  onChange={() => {
-                    setTheme(colourTheme);
-                    setDark(!dark);
-                  }}
-                />
-                <div
-                  aria-label="Theme Toggler"
-                  className="header__theme-toggler peer peer-checked:after:left-[23px] peer-checked:after:-translate-x-full peer-checked:bg-gradient-to-r peer-checked:from-fromToggle peer-checked:to-toToggle"
-                ></div>
-              </label>
-            </div>
-          </div>
-        </header>
+        <Header />
         <div className="content__container">
-          <div className="content__container-blocks">
-            {blocks.map((block, index) => (
-              <div key={index} className={`card ${borderColour(index + 1)}`}>
-                <div className="card__username">
-                  <img src={block.icon} alt="platform icon" />
-                  {block.username}
+          <Blocks />
+          <div className="content__container-small-blocks">
+            <h3>Overview - Today</h3>
+            {smallCardData.map((sCard, index) => (
+              <div className="small-card" key={index + 1}>
+                <div className="small-card__header">
+                  <h6>{sCard.title}</h6>
+                  <img src={sCard.icon} alt="platform icon" />
                 </div>
-                <div className="card__number">{block.number}</div>
-                <div className="card__title">{block.title}</div>
-                <div className="card__time">
-                  <img src={block.status} alt="status up or down" />
-                  {block.time}
+                <div className="small-card__footer">
+                  <div>{sCard.numb}</div>
+                  <div>
+                    <img src={sCard.tIcon} alt="ups and downs" />
+                    <div>{sCard.percent}</div>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
-          <div>small-blocks</div>
         </div>
       </div>
-
-      {/*
-
-  Overview - Today
-
-  Page Views
-  87
-  3%
-
-  Likes
-  52
-  2%
-
-  Likes
-  5462
-  2257%
-
-  Profile Views
-  52k
-  1375%
-
-  Retweets
-  117
-  303%
-
-  Likes
-  507
-  553%
-
-  Likes
-  107
-  19%
-
-  Total Views
-  1407
-  12%
-  
-  <div className="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div> */}
+      <div className="attribution">
+        Coded by <a href="linktr.ee/Joe_Hsn">Joe_Hsn</a>.
+      </div>
     </div>
   );
 }
