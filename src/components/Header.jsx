@@ -20,7 +20,7 @@ const Header = () => {
           </a>
           <div className="header__title-total">Total Followers: 23,004</div>
         </div>
-        <hr className="md:hidden" />
+        <hr className="lg:hidden" />
         <div className="header__theme">
           <span className="header__theme-title">Dark Mode</span>
           <label htmlFor="checked-toggle" className="header__theme-label">

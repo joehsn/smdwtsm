@@ -11,25 +11,25 @@
     @apply min-h-screen w-full;
   }
   .header {
-    @apply bg-veryPaleBlueForTopBG w-full p-4 md:px-0 md:pt-8 pb-32 dark:bg-veryDarkBlueForTopBG rounded-b-2xl;
+    @apply bg-veryPaleBlueForTopBG w-full p-4 lg:px-0 lg:pt-8 pb-32 dark:bg-veryDarkBlueForTopBG rounded-b-2xl;
   }
   .header__container {
-    @apply mx-auto w-full md:w-3/4 md:flex md:items-center md:justify-between;
+    @apply mx-auto w-full lg:w-3/4 lg:flex lg:items-center lg:justify-between;
   }
   .header__title {
-    @apply mb-4 md:mb-0;
+    @apply mb-4 lg:mb-0;
   }
   .header__title-logo {
-    @apply text-xl md:text-3xl font-bold text-veryDarkBlueForText dark:text-white;
+    @apply text-xl lg:text-3xl font-bold text-veryDarkBlueForText dark:text-white;
   }
   .header__title-total {
     @apply text-darkGrayishBlueForText dark:text-desaturatedBlueForText text-sm font-bold;
   }
   .header__theme {
-    @apply flex items-center justify-between mt-4 md:mt-0;
+    @apply flex items-center justify-between mt-4 lg:mt-0;
   }
   .header__theme-title {
-    @apply text-sm font-bold text-darkGrayishBlueForText dark:text-desaturatedBlueForText md:mr-3;
+    @apply text-sm font-bold text-darkGrayishBlueForText dark:text-desaturatedBlueForText lg:mr-3;
   }
   .header__theme-label {
     @apply inline-flex relative items-center cursor-pointer;
@@ -38,25 +38,46 @@
     @apply w-12 h-6 bg-toggle rounded-full after:content-[''] after:absolute after:top-0.5 after:right-[3px] after:bg-white dark:after:bg-veryDarkBlueForTopBG dark:after:border-veryDarkBlueForTopBG after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600;
   }
   .content__container {
-    @apply mx-auto w-full md:w-3/4;
+    @apply mx-auto w-full lg:w-3/4;
   }
   .content__container-blocks {
-    @apply w-full flex flex-wrap justify-between items-center -translate-y-[12.5%] sm:-translate-y-[20%] space-y-4 sm:space-y-0  md:-translate-y-1/2 px-4 md:px-0;
+    @apply w-full flex flex-wrap justify-between items-center -translate-y-[12.5%] sm:-translate-y-[25%]  lg:-translate-y-1/2 px-4 lg:px-0;
   }
   .card {
-    @apply w-full sm:w-[49%] md:w-[22.5%] overflow-hidden flex flex-col justify-center items-center bg-lightGrayishBlueForCardBG dark:bg-darkDesaturatedBlueForCardBG p-3 rounded relative after:content-[''] after:absolute after:top-0 after:right-0 after:w-full after:h-1 dark:text-white px-1 py-4;
+    @apply w-full sm:w-[49%] lg:w-[22.5%] overflow-hidden flex flex-col justify-center items-center bg-lightGrayishBlueForCardBG dark:bg-darkDesaturatedBlueForCardBG p-3 rounded relative after:content-[''] after:absolute after:top-0 after:right-0 after:w-full after:h-1 dark:text-white px-1 py-6 mt-4 lg:mt-0 hover:bg-slate-300 dark:hover:bg-slate-700 cursor-pointer;
   }
   .card__username {
     @apply w-full flex justify-center items-center font-bold text-darkGrayishBlueForText dark:text-desaturatedBlueForText text-sm;
   }
   .card__number {
-    @apply text-6xl font-bold mt-4;
+    @apply text-5xl font-bold mt-4;
   }
   .card__title {
     @apply text-sm tracking-[0.15rem] uppercase text-darkGrayishBlueForText dark:text-desaturatedBlueForText;
   }
   .card__time {
     @apply flex justify-center items-center mt-4 text-sm font-bold;
+  }
+  .content__container-small-blocks {
+    @apply -translate-y-[5%] lg:-translate-y-[15%] w-full flex flex-wrap justify-between items-center space-y-4 px-4 lg:px-0;
+  }
+  .content__container-small-blocks h3 {
+    @apply w-full text-xl text-darkGrayishBlueForText dark:text-desaturatedBlueForText font-bold;
+  }
+  .small-card {
+    @apply bg-lightGrayishBlueForCardBG dark:bg-darkDesaturatedBlueForCardBG w-full sm:w-[49%] lg:w-[23.5%] rounded-md p-6 hover:bg-slate-300 dark:hover:bg-slate-700 cursor-pointer;
+  }
+  .small-card__header {
+    @apply text-sm flex items-center justify-between text-darkGrayishBlueForText dark:text-desaturatedBlueForText font-bold;
+  }
+  .small-card__footer {
+    @apply flex items-end justify-between mt-4 dark:text-white;
+  }
+  .attribution {
+    @apply -translate-y-7 sm:-translate-y-4 lg:-translate-y-6 font-bold dark:text-white;
+  }
+  .attribution a {
+    @apply text-blue-700 dark:text-desaturatedBlueForText underline;
   }
 }
 body {
